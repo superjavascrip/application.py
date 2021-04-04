@@ -348,40 +348,44 @@ class MainWindow(QMainWindow):
             raise Constants.SelectItemError("选择过多")
 
     def on_add_random_language_click(self) -> None:
-        languages_numbers, ok_pressed = QInputDialog.getText(
-            self,
-            "输入语言个数",
-            "个数:",
-            QLineEdit.Normal,
-            "")
-        if ok_pressed:
-            language_list = []
-            for _ in range(int(languages_numbers) + 1):
-                language_list.append(random.choice(Constants.LANGUAGES))
-            if len(self.ui.all_config.selectedItems()) == 1:
-                item = self.ui.all_config.selectedItems()[0]
-                if item.parent() is not None:
-                    self.config_manager.add_language(
-                        language_list,
-                        self.ui.all_config.selectedItems()[0].parent().text(0),
-                        self.ui.all_config.selectedIndexes()[0].row()
-                    )
-                    self.ui.all_config.clear()
-                    self.init_all_config()
+        if len(self.ui.all_config.selectedItems()) == 0:
+            self.warning_dialog("错误", "你还没有选择要操作的配置")
+            raise Constants.SelectItemError("你还没有选择要操作的配置")
+        else:
+            languages_numbers, ok_pressed = QInputDialog.getText(
+                self,
+                "输入语言个数",
+                "个数:",
+                QLineEdit.Normal,
+                "")
+            if ok_pressed:
+                language_list = []
+                for _ in range(int(languages_numbers) + 1):
+                    language_list.append(random.choice(Constants.LANGUAGES))
+                if len(self.ui.all_config.selectedItems()) == 1:
+                    item = self.ui.all_config.selectedItems()[0]
+                    if item.parent() is not None:
+                        self.config_manager.add_language(
+                            language_list,
+                            self.ui.all_config.selectedItems()[0].parent().text(0),
+                            self.ui.all_config.selectedIndexes()[0].row()
+                        )
+                        self.ui.all_config.clear()
+                        self.init_all_config()
+                    else:
+                        self.config_manager.add_language(
+                            language_list,
+                            item.data(0, 0),
+                            0
+                        )
+                        self.ui.all_config.clear()
+                        self.init_all_config()
+                elif len(self.ui.all_config.selectedItems()) == 0:
+                    self.warning_dialog("错误", "你还没有选择要操作的配置")
+                    raise Constants.SelectItemError("你还没有选择要操作的配置")
                 else:
-                    self.config_manager.add_language(
-                        language_list,
-                        item.data(0, 0),
-                        0
-                    )
-                    self.ui.all_config.clear()
-                    self.init_all_config()
-            elif len(self.ui.all_config.selectedItems()) == 0:
-                self.warning_dialog("错误", "你还没有选择要操作的配置")
-                raise Constants.SelectItemError("你还没有选择要操作的配置")
-            else:
-                self.warning_dialog("错误", "选择过多")
-                raise Constants.SelectItemError("选择过多")
+                    self.warning_dialog("错误", "选择过多")
+                    raise Constants.SelectItemError("选择过多")
 
     def delete_config_and_language(self) -> None:
         for item in self.ui.all_config.selectedItems():
