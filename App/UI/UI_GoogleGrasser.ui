@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>602</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Core/res/google-translate.png</normaloff>../Core/res/google-translate.png</iconset>
+    <normaloff>../Core/res/application-icon.svg</normaloff>../Core/res/application-icon.svg</iconset>
   </property>
   <widget class="QWidget" name="content_window">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -159,7 +159,7 @@
           <item>
            <widget class="QLabel" name="first_settings_option_prompt">
             <property name="text">
-             <string>选择的谷歌翻译域名:(建议中国大陆的居民选择tanslate.google.cn):    </string>
+             <string>选择的谷歌翻译域名(建议中国大陆的居民选择tanslate.google.cn):    </string>
             </property>
            </widget>
           </item>
@@ -173,7 +173,7 @@
           <item>
            <widget class="QLabel" name="third_setting_option_prompt">
             <property name="text">
-             <string>你要使用的Config文件文件名:(建议选择默认，因为有其他Config可以导入进默认文件)    </string>
+             <string>你要使用的Config文件文件名(建议选择默认，因为有其他Config可以导入进默认文件):</string>
             </property>
            </widget>
           </item>
@@ -191,7 +191,7 @@
           <item>
            <widget class="QLabel" name="second_setting_option_prompt">
             <property name="text">
-             <string>是否不使用英文:(因为谷歌翻译对英文翻译支持较好，如果不使用英文更加生草，建议选择)</string>
+             <string>是否不使用英文(因为谷歌翻译对英文翻译支持较好，如果不使用英文更加生草，建议选择):</string>
             </property>
            </widget>
           </item>
@@ -227,19 +227,9 @@
       </widget>
       <widget class="QWidget" name="config_tab">
        <attribute name="title">
-        <string>配置(暂未完成)</string>
+        <string>配置</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <widget class="QLabel" name="all_config_prompt">
-          <property name="text">
-           <string>全部配置:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QTreeView" name="all_config"/>
-        </item>
         <item row="1" column="1">
          <layout class="QVBoxLayout" name="config_tab_button_group">
           <item>
@@ -257,9 +247,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="delete_language">
+           <widget class="QPushButton" name="delete_config_and_language">
             <property name="text">
-             <string>删除此语言</string>
+             <string>删除</string>
             </property>
            </widget>
           </item>
@@ -291,14 +281,23 @@
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="delete_config">
-            <property name="text">
-             <string>删除配置</string>
-            </property>
-           </widget>
-          </item>
          </layout>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="all_config_prompt">
+          <property name="text">
+           <string>全部配置:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTreeWidget" name="all_config">
+          <column>
+           <property name="text">
+            <string notr="true">1</string>
+           </property>
+          </column>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -349,12 +348,11 @@ p, li { white-space: pre-wrap; }
   <tabstop>select_application_style</tabstop>
   <tabstop>add_language</tabstop>
   <tabstop>add_random_language</tabstop>
-  <tabstop>delete_language</tabstop>
+  <tabstop>delete_config_and_language</tabstop>
   <tabstop>add_config</tabstop>
   <tabstop>add_random_config</tabstop>
   <tabstop>import_config</tabstop>
   <tabstop>export_config</tabstop>
-  <tabstop>delete_config</tabstop>
   <tabstop>all_config</tabstop>
   <tabstop>grass_result_browser</tabstop>
  </tabstops>

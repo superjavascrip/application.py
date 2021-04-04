@@ -22,13 +22,15 @@ class GoogleGrasser(object):
     ):
         from googletrans import Translator
         from ConfigManager import ConfigManager
-        from constants import LANGUAGES
+        from Constants import LANGUAGES
         self.LANGUAGES = LANGUAGES
-        if no_english:
+        if no_english and "en" in self.LANGUAGES:
             self.LANGUAGES.remove("en")
-        self.translator = Translator(service_urls=[
-            service_url
-        ])
+        self.translator = Translator(
+            service_urls=[
+                service_url
+            ]
+        )
         self.language_number = (len(self.LANGUAGES) - 1)
         self.config_manager = ConfigManager(config_file_name)
 
@@ -39,13 +41,15 @@ class GoogleGrasser(object):
     ) -> GrassResult:
         text = original_text
         language_list = []
-        i = 0
         for i in range(frequency + 1):
             if i != 0:
                 random_language = random.choice(self.LANGUAGES)
                 language_list.append(random_language)
                 text = self.translator.translate(
-                    text, dest=random_language, src=language_list[i - 1]).text
+                    text,
+                    dest=random_language,
+                    src=langid.classify(text)[0]
+                ).text
             else:
                 language_list.append("zh-cn")
                 random_language = random.choice(self.LANGUAGES)
@@ -55,7 +59,14 @@ class GoogleGrasser(object):
                     src="zh-cn"
                 ).text
         language_list.pop(0)
-        return GrassResult(self.translator.translate(text, src=language_list[i - 1], dest="zh-cn").text, language_list)
+        return GrassResult(
+            self.translator.translate(
+                text,
+                src=langid.classify(text)[0],
+                dest="zh-cn"
+            ).text,
+            language_list
+        )
 
     def output_random_grass_txt(
             self,
@@ -96,7 +107,7 @@ class GoogleGrasser(object):
                 text,
                 dest="zh-cn",
                 src=config[len(config) - 1]
-            )
+            ).text
         return GrassResult(text, None)
 
     def output_config_grass(

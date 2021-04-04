@@ -12,6 +12,7 @@
 本Readme包含:
 
 * [安装依赖包](#安装依赖包)
+
 * [运行脚本](#运行脚本)
 * [项目文件目录](#项目文件目录)
 * [将要添加的功能](#将要添加的功能)
@@ -28,7 +29,7 @@ pip install -r requiments.txt
 
 ```shell
 cd App/Core/
-python application.py
+python Application.py
 ```
 
 ## 项目文件目录
@@ -40,15 +41,18 @@ python application.py
         + Export(导出的配置文件存放目录)
         + Output(导出的mp3音频文件存放目录)
         + res(资源目录)
-        + Settings(设置文件存放目录)
-        + application.py(应用程序主代码文件)
+          * application_icon.png(程序图标)
+          * config.png(配置图标)
+          * language.png(语言图标)
+        + Settings.py(设置文件存放目录)
+        + Application.py(应用程序主代码文件)
         + ConfigManager.py(配置管理器代码文件)
-        + constants.py(程序常量存放文件)
+        + Constants.py(程序常量存放文件)
         + GoogleVoice.py(谷歌语音爬虫代码文件)
         + Grasser.py(生草器主代码文件)
         + SettingsManager.py(设置管理器代码文件)
-        + UI_GoogleGrasser.py(UI代码文件，由PySide6-uic 用 UI文件夹里的UI_GoogleGrasser.ui文件自动生成)
-    - UI(UI文件目录)
+        + UI_GoogleGrasser.py(程序主UI代码文件，由PySide6-uic 用 UI文件夹里的UI_GoogleGrasser.ui文件自动生成)
+    - UI(UI文件目录，由PySide6-uic 用 UI文件夹里的AddLanguageDialog.ui文件自动生成)
         + UI_GoogleGrasser.ui(PySide6UI文件，使用QtDesign编辑)
 * LICENSE(开源协议)
 * Readme.md(本文)

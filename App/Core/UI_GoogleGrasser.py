@@ -17,9 +17,9 @@ class Ui_application(object):
     def setupUi(self, application):
         if not application.objectName():
             application.setObjectName(u"application")
-        application.resize(808, 602)
+        application.resize(800, 600)
         icon = QIcon()
-        icon.addFile(u"res/google-translate.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../Core/res/application-icon.svg", QSize(), QIcon.Normal, QIcon.Off)
         application.setWindowIcon(icon)
         self.content_window = QWidget(application)
         self.content_window.setObjectName(u"content_window")
@@ -197,16 +197,6 @@ class Ui_application(object):
         self.config_tab.setObjectName(u"config_tab")
         self.gridLayout_8 = QGridLayout(self.config_tab)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.all_config_prompt = QLabel(self.config_tab)
-        self.all_config_prompt.setObjectName(u"all_config_prompt")
-
-        self.gridLayout_8.addWidget(self.all_config_prompt, 0, 0, 1, 1)
-
-        self.all_config = QTreeView(self.config_tab)
-        self.all_config.setObjectName(u"all_config")
-
-        self.gridLayout_8.addWidget(self.all_config, 1, 0, 1, 1)
-
         self.config_tab_button_group = QVBoxLayout()
         self.config_tab_button_group.setObjectName(u"config_tab_button_group")
         self.add_language = QPushButton(self.config_tab)
@@ -219,10 +209,10 @@ class Ui_application(object):
 
         self.config_tab_button_group.addWidget(self.add_random_language)
 
-        self.delete_language = QPushButton(self.config_tab)
-        self.delete_language.setObjectName(u"delete_language")
+        self.delete_config_and_language = QPushButton(self.config_tab)
+        self.delete_config_and_language.setObjectName(u"delete_config_and_language")
 
-        self.config_tab_button_group.addWidget(self.delete_language)
+        self.config_tab_button_group.addWidget(self.delete_config_and_language)
 
         self.add_config = QPushButton(self.config_tab)
         self.add_config.setObjectName(u"add_config")
@@ -244,13 +234,21 @@ class Ui_application(object):
 
         self.config_tab_button_group.addWidget(self.export_config)
 
-        self.delete_config = QPushButton(self.config_tab)
-        self.delete_config.setObjectName(u"delete_config")
-
-        self.config_tab_button_group.addWidget(self.delete_config)
-
 
         self.gridLayout_8.addLayout(self.config_tab_button_group, 1, 1, 1, 1)
+
+        self.all_config_prompt = QLabel(self.config_tab)
+        self.all_config_prompt.setObjectName(u"all_config_prompt")
+
+        self.gridLayout_8.addWidget(self.all_config_prompt, 0, 0, 1, 1)
+
+        self.all_config = QTreeWidget(self.config_tab)
+        __qtreewidgetitem = QTreeWidgetItem()
+        __qtreewidgetitem.setText(0, u"1");
+        self.all_config.setHeaderItem(__qtreewidgetitem)
+        self.all_config.setObjectName(u"all_config")
+
+        self.gridLayout_8.addWidget(self.all_config, 1, 0, 1, 1)
 
         self.tabs.addTab(self.config_tab, "")
         self.about_tab = QWidget()
@@ -283,13 +281,12 @@ class Ui_application(object):
         QWidget.setTabOrder(self.set_config_file_name, self.select_application_style)
         QWidget.setTabOrder(self.select_application_style, self.add_language)
         QWidget.setTabOrder(self.add_language, self.add_random_language)
-        QWidget.setTabOrder(self.add_random_language, self.delete_language)
-        QWidget.setTabOrder(self.delete_language, self.add_config)
+        QWidget.setTabOrder(self.add_random_language, self.delete_config_and_language)
+        QWidget.setTabOrder(self.delete_config_and_language, self.add_config)
         QWidget.setTabOrder(self.add_config, self.add_random_config)
         QWidget.setTabOrder(self.add_random_config, self.import_config)
         QWidget.setTabOrder(self.import_config, self.export_config)
-        QWidget.setTabOrder(self.export_config, self.delete_config)
-        QWidget.setTabOrder(self.delete_config, self.all_config)
+        QWidget.setTabOrder(self.export_config, self.all_config)
         QWidget.setTabOrder(self.all_config, self.grass_result_browser)
 
         self.retranslateUi(application)
@@ -312,23 +309,22 @@ class Ui_application(object):
         self.grass_frequency_prompt_label.setText(QCoreApplication.translate("application", u"\u751f\u8349\u7684\u6b21\u6570:", None))
         self.tabs.setTabText(self.tabs.indexOf(self.main_tab), QCoreApplication.translate("application", u"\u4e3b\u9875", None))
         self.fourth_setting_option_prompt_2.setText(QCoreApplication.translate("application", u"\u4f7f\u7528\u7684\u4e3b\u9898: ", None))
-        self.first_settings_option_prompt.setText(QCoreApplication.translate("application", u"\u9009\u62e9\u7684\u8c37\u6b4c\u7ffb\u8bd1\u57df\u540d:(\u5efa\u8bae\u4e2d\u56fd\u5927\u9646\u7684\u5c45\u6c11\u9009\u62e9tanslate.google.cn):    ", None))
-        self.third_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u4f60\u8981\u4f7f\u7528\u7684Config\u6587\u4ef6\u6587\u4ef6\u540d:(\u5efa\u8bae\u9009\u62e9\u9ed8\u8ba4\uff0c\u56e0\u4e3a\u6709\u5176\u4ed6Config\u53ef\u4ee5\u5bfc\u5165\u8fdb\u9ed8\u8ba4\u6587\u4ef6)    ", None))
+        self.first_settings_option_prompt.setText(QCoreApplication.translate("application", u"\u9009\u62e9\u7684\u8c37\u6b4c\u7ffb\u8bd1\u57df\u540d(\u5efa\u8bae\u4e2d\u56fd\u5927\u9646\u7684\u5c45\u6c11\u9009\u62e9tanslate.google.cn):    ", None))
+        self.third_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u4f60\u8981\u4f7f\u7528\u7684Config\u6587\u4ef6\u6587\u4ef6\u540d(\u5efa\u8bae\u9009\u62e9\u9ed8\u8ba4\uff0c\u56e0\u4e3a\u6709\u5176\u4ed6Config\u53ef\u4ee5\u5bfc\u5165\u8fdb\u9ed8\u8ba4\u6587\u4ef6):", None))
         self.set_config_file_name.setText(QCoreApplication.translate("application", u"Config", None))
-        self.second_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u662f\u5426\u4e0d\u4f7f\u7528\u82f1\u6587:(\u56e0\u4e3a\u8c37\u6b4c\u7ffb\u8bd1\u5bf9\u82f1\u6587\u7ffb\u8bd1\u652f\u6301\u8f83\u597d\uff0c\u5982\u679c\u4e0d\u4f7f\u7528\u82f1\u6587\u66f4\u52a0\u751f\u8349\uff0c\u5efa\u8bae\u9009\u62e9)", None))
+        self.second_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u662f\u5426\u4e0d\u4f7f\u7528\u82f1\u6587(\u56e0\u4e3a\u8c37\u6b4c\u7ffb\u8bd1\u5bf9\u82f1\u6587\u7ffb\u8bd1\u652f\u6301\u8f83\u597d\uff0c\u5982\u679c\u4e0d\u4f7f\u7528\u82f1\u6587\u66f4\u52a0\u751f\u8349\uff0c\u5efa\u8bae\u9009\u62e9):", None))
         self.radio_first_setting_option.setText(QCoreApplication.translate("application", u"\u662f", None))
         self.radio_second_setting_option.setText(QCoreApplication.translate("application", u"\u5426", None))
         self.tabs.setTabText(self.tabs.indexOf(self.settings_tab), QCoreApplication.translate("application", u"\u8bbe\u7f6e", None))
-        self.all_config_prompt.setText(QCoreApplication.translate("application", u"\u5168\u90e8\u914d\u7f6e:", None))
         self.add_language.setText(QCoreApplication.translate("application", u"\u6dfb\u52a0\u8bed\u8a00", None))
         self.add_random_language.setText(QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u8bed\u8a00", None))
-        self.delete_language.setText(QCoreApplication.translate("application", u"\u5220\u9664\u6b64\u8bed\u8a00", None))
+        self.delete_config_and_language.setText(QCoreApplication.translate("application", u"\u5220\u9664", None))
         self.add_config.setText(QCoreApplication.translate("application", u"\u6dfb\u52a0\u914d\u7f6e", None))
         self.add_random_config.setText(QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u914d\u7f6e", None))
         self.import_config.setText(QCoreApplication.translate("application", u"\u5bfc\u5165\u914d\u7f6e", None))
         self.export_config.setText(QCoreApplication.translate("application", u"\u5bfc\u51fa\u914d\u7f6e", None))
-        self.delete_config.setText(QCoreApplication.translate("application", u"\u5220\u9664\u914d\u7f6e", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.config_tab), QCoreApplication.translate("application", u"\u914d\u7f6e(\u6682\u672a\u5b8c\u6210)", None))
+        self.all_config_prompt.setText(QCoreApplication.translate("application", u"\u5168\u90e8\u914d\u7f6e:", None))
+        self.tabs.setTabText(self.tabs.indexOf(self.config_tab), QCoreApplication.translate("application", u"\u914d\u7f6e", None))
         self.about_text_browser.setHtml(QCoreApplication.translate("application", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><title>\u5173\u4e8e</title><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
