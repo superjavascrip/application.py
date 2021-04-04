@@ -54,7 +54,6 @@ class Ui_application(object):
 
         self.second_grid_layout.addWidget(self.copy_result, 2, 0, 1, 1)
 
-
         self.gridLayout_4.addLayout(self.second_grid_layout, 2, 3, 2, 1)
 
         self.grass_content_layout = QHBoxLayout()
@@ -70,7 +69,6 @@ class Ui_application(object):
 
         self.grass_content_layout.addWidget(self.grass_result_browser)
 
-
         self.gridLayout_4.addLayout(self.grass_content_layout, 1, 2, 1, 2)
 
         self.grass_option_push_buttons = QHBoxLayout()
@@ -84,7 +82,6 @@ class Ui_application(object):
         self.start_grass.setObjectName(u"start_grass")
 
         self.grass_option_push_buttons.addWidget(self.start_grass)
-
 
         self.gridLayout_4.addLayout(self.grass_option_push_buttons, 3, 2, 1, 1)
 
@@ -113,7 +110,6 @@ class Ui_application(object):
 
         self.grass_option.addWidget(self.grass_frequency, 1, 1, 1, 1)
 
-
         self.gridLayout_4.addLayout(self.grass_option, 2, 2, 1, 1)
 
         self.tabs.addTab(self.main_tab, "")
@@ -133,7 +129,6 @@ class Ui_application(object):
 
         self.fourth_setting_option.addWidget(self.select_application_style)
 
-
         self.gridLayout.addLayout(self.fourth_setting_option, 3, 0, 1, 1)
 
         self.first_setting_option = QHBoxLayout()
@@ -148,7 +143,6 @@ class Ui_application(object):
 
         self.first_setting_option.addWidget(self.select_google_translate_url)
 
-
         self.gridLayout.addLayout(self.first_setting_option, 0, 0, 1, 1)
 
         self.third_setting_option = QHBoxLayout()
@@ -162,7 +156,6 @@ class Ui_application(object):
         self.set_config_file_name.setObjectName(u"set_config_file_name")
 
         self.third_setting_option.addWidget(self.set_config_file_name)
-
 
         self.gridLayout.addLayout(self.third_setting_option, 2, 0, 1, 1)
 
@@ -188,7 +181,6 @@ class Ui_application(object):
         self.radio_second_setting_option.setChecked(False)
 
         self.second_setting_option.addWidget(self.radio_second_setting_option)
-
 
         self.gridLayout.addLayout(self.second_setting_option, 4, 0, 1, 1)
 
@@ -234,7 +226,6 @@ class Ui_application(object):
 
         self.config_tab_button_group.addWidget(self.export_config)
 
-
         self.gridLayout_8.addLayout(self.config_tab_button_group, 1, 1, 1, 1)
 
         self.all_config_prompt = QLabel(self.config_tab)
@@ -244,7 +235,7 @@ class Ui_application(object):
 
         self.all_config = QTreeWidget(self.config_tab)
         __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(0, u"1");
+        __qtreewidgetitem.setText(0, u"1")
         self.all_config.setHeaderItem(__qtreewidgetitem)
         self.all_config.setObjectName(u"all_config")
 
@@ -293,54 +284,74 @@ class Ui_application(object):
 
         self.tabs.setCurrentIndex(0)
 
-
         QMetaObject.connectSlotsByName(application)
+
     # setupUi
 
     def retranslateUi(self, application):
         application.setWindowTitle(QCoreApplication.translate("application", u"GoogleGrasser", None))
         self.save_result.setText(QCoreApplication.translate("application", u"\u4fdd\u5b58\u7ed3\u679c", None))
-        self.output_google_voice.setText(QCoreApplication.translate("application", u"\u5bfc\u51fa\u8c37\u6b4c\u8bed\u97f3", None))
-        self.save_this_grass_as_config.setText(QCoreApplication.translate("application", u"\u5c06\u6b64\u6b21\u751f\u8349\u4fdd\u5b58\u4e3a\u914d\u7f6e", None))
+        self.output_google_voice.setText(
+            QCoreApplication.translate("application", u"\u5bfc\u51fa\u8c37\u6b4c\u8bed\u97f3", None))
+        self.save_this_grass_as_config.setText(
+            QCoreApplication.translate("application", u"\u5c06\u6b64\u6b21\u751f\u8349\u4fdd\u5b58\u4e3a\u914d\u7f6e",
+                                       None))
         self.copy_result.setText(QCoreApplication.translate("application", u"\u590d\u5236\u7ed3\u679c", None))
         self.open_file.setText(QCoreApplication.translate("application", u"\u6253\u5f00\u6587\u4ef6", None))
         self.start_grass.setText(QCoreApplication.translate("application", u"\u5f00\u59cb\u751f\u8349", None))
-        self.use_config_prompt_label.setText(QCoreApplication.translate("application", u"\u4f7f\u7528\u7684\u914d\u7f6e:", None))
-        self.grass_frequency_prompt_label.setText(QCoreApplication.translate("application", u"\u751f\u8349\u7684\u6b21\u6570:", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.main_tab), QCoreApplication.translate("application", u"\u4e3b\u9875", None))
-        self.fourth_setting_option_prompt_2.setText(QCoreApplication.translate("application", u"\u4f7f\u7528\u7684\u4e3b\u9898: ", None))
-        self.first_settings_option_prompt.setText(QCoreApplication.translate("application", u"\u9009\u62e9\u7684\u8c37\u6b4c\u7ffb\u8bd1\u57df\u540d(\u5efa\u8bae\u4e2d\u56fd\u5927\u9646\u7684\u5c45\u6c11\u9009\u62e9tanslate.google.cn):    ", None))
-        self.third_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u4f60\u8981\u4f7f\u7528\u7684Config\u6587\u4ef6\u6587\u4ef6\u540d(\u5efa\u8bae\u9009\u62e9\u9ed8\u8ba4\uff0c\u56e0\u4e3a\u6709\u5176\u4ed6Config\u53ef\u4ee5\u5bfc\u5165\u8fdb\u9ed8\u8ba4\u6587\u4ef6):", None))
+        self.use_config_prompt_label.setText(
+            QCoreApplication.translate("application", u"\u4f7f\u7528\u7684\u914d\u7f6e:", None))
+        self.grass_frequency_prompt_label.setText(
+            QCoreApplication.translate("application", u"\u751f\u8349\u7684\u6b21\u6570:", None))
+        self.tabs.setTabText(self.tabs.indexOf(self.main_tab),
+                             QCoreApplication.translate("application", u"\u4e3b\u9875", None))
+        self.fourth_setting_option_prompt_2.setText(
+            QCoreApplication.translate("application", u"\u4f7f\u7528\u7684\u4e3b\u9898: ", None))
+        self.first_settings_option_prompt.setText(QCoreApplication.translate("application",
+                                                                             u"\u9009\u62e9\u7684\u8c37\u6b4c\u7ffb\u8bd1\u57df\u540d(\u5efa\u8bae\u4e2d\u56fd\u5927\u9646\u7684\u5c45\u6c11\u9009\u62e9tanslate.google.cn):    ",
+                                                                             None))
+        self.third_setting_option_prompt.setText(QCoreApplication.translate("application",
+                                                                            u"\u4f60\u8981\u4f7f\u7528\u7684Config\u6587\u4ef6\u6587\u4ef6\u540d(\u5efa\u8bae\u9009\u62e9\u9ed8\u8ba4\uff0c\u56e0\u4e3a\u6709\u5176\u4ed6Config\u53ef\u4ee5\u5bfc\u5165\u8fdb\u9ed8\u8ba4\u6587\u4ef6):",
+                                                                            None))
         self.set_config_file_name.setText(QCoreApplication.translate("application", u"Config", None))
-        self.second_setting_option_prompt.setText(QCoreApplication.translate("application", u"\u662f\u5426\u4e0d\u4f7f\u7528\u82f1\u6587(\u56e0\u4e3a\u8c37\u6b4c\u7ffb\u8bd1\u5bf9\u82f1\u6587\u7ffb\u8bd1\u652f\u6301\u8f83\u597d\uff0c\u5982\u679c\u4e0d\u4f7f\u7528\u82f1\u6587\u66f4\u52a0\u751f\u8349\uff0c\u5efa\u8bae\u9009\u62e9):", None))
+        self.second_setting_option_prompt.setText(QCoreApplication.translate("application",
+                                                                             u"\u662f\u5426\u4e0d\u4f7f\u7528\u82f1\u6587(\u56e0\u4e3a\u8c37\u6b4c\u7ffb\u8bd1\u5bf9\u82f1\u6587\u7ffb\u8bd1\u652f\u6301\u8f83\u597d\uff0c\u5982\u679c\u4e0d\u4f7f\u7528\u82f1\u6587\u66f4\u52a0\u751f\u8349\uff0c\u5efa\u8bae\u9009\u62e9):",
+                                                                             None))
         self.radio_first_setting_option.setText(QCoreApplication.translate("application", u"\u662f", None))
         self.radio_second_setting_option.setText(QCoreApplication.translate("application", u"\u5426", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.settings_tab), QCoreApplication.translate("application", u"\u8bbe\u7f6e", None))
+        self.tabs.setTabText(self.tabs.indexOf(self.settings_tab),
+                             QCoreApplication.translate("application", u"\u8bbe\u7f6e", None))
         self.add_language.setText(QCoreApplication.translate("application", u"\u6dfb\u52a0\u8bed\u8a00", None))
-        self.add_random_language.setText(QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u8bed\u8a00", None))
+        self.add_random_language.setText(
+            QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u8bed\u8a00", None))
         self.delete_config_and_language.setText(QCoreApplication.translate("application", u"\u5220\u9664", None))
         self.add_config.setText(QCoreApplication.translate("application", u"\u6dfb\u52a0\u914d\u7f6e", None))
-        self.add_random_config.setText(QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u914d\u7f6e", None))
+        self.add_random_config.setText(
+            QCoreApplication.translate("application", u"\u968f\u673a\u751f\u6210\u914d\u7f6e", None))
         self.import_config.setText(QCoreApplication.translate("application", u"\u5bfc\u5165\u914d\u7f6e", None))
         self.export_config.setText(QCoreApplication.translate("application", u"\u5bfc\u51fa\u914d\u7f6e", None))
         self.all_config_prompt.setText(QCoreApplication.translate("application", u"\u5168\u90e8\u914d\u7f6e:", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.config_tab), QCoreApplication.translate("application", u"\u914d\u7f6e", None))
-        self.about_text_browser.setHtml(QCoreApplication.translate("application", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><title>\u5173\u4e8e</title><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<h2 style=\" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:x-large; font-weight:700;\">\u4f5c\u8005\uff1a </span></h2>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/superjavascrip\"><span style=\" text-decoration: underline; color:#16f216;\">Github @superjavascrip</span></a> <br />\u9177\u5b89 @\u5170\u683c\u5982\u540cOfficial <br /><a href=\"https://space.bilibili.com/426825448\"><span style=\" text-decoration: underline; co"
-                        "lor:#16f216;\">Bilibili @\u5170\u683c\u5982\u540c</span></a> </p>\n"
-"<h2 style=\" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:x-large; font-weight:700;\">\u7b80\u4ecb </span></h2>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u8fd9\u662f\u4e00\u4e2a\u4f7f\u7528Python\u7f16\u5199\u7684\u8c37\u6b4c\u751f\u8349\u5668\uff08GUI\uff09\uff0c\u53ef\u4ee5\u4f7f\u7528\u8c37\u6b4c\u7ffb\u8bd1\u5168\u81ea\u52a8\u7684\u5c06\u6587\u672c\u751f\u8349\u3002 </p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">\u6211\u80fd\u591f\u505a\u51fa\u6b64\u5e94\u7528\u8981\u611f\u8c22\u8bb8\u8bb8\u591a\u591a\u7684\u5f00\u6e90\u5e94\u7528\uff0cPython\uff0cPython\u5e93googletrans\uff0cPySide6\uff08Qt\uff09\u3002\u4e0b\u9762\u662f\u94fe\u63a5"
-                        "\uff1a </span></h4>\n"
-"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python/cpython\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u89e3\u91ca\u5668\u5f00\u6e90\u4ee3\u7801</span></a> </li>\n"
-"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u5b98\u7f51</span></a> </li>\n"
-"<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/ssut/py-googletrans\"><span style=\" text-decoration: underline; color:#16f216;\">googletrans\u5e93</span></a> </li>\n"
-"<li style=\"\" style=\" margin-"
-                        "top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://pyside.org\"><span style=\" text-decoration: underline; color:#16f216;\">PySide\u5b98\u7f51</span></a> </li></ul></body></html>", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.about_tab), QCoreApplication.translate("application", u"\u5173\u4e8e", None))
+        self.tabs.setTabText(self.tabs.indexOf(self.config_tab),
+                             QCoreApplication.translate("application", u"\u914d\u7f6e", None))
+        self.about_text_browser.setHtml(QCoreApplication.translate("application",
+                                                                   u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                                   "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><title>\u5173\u4e8e</title><style type=\"text/css\">\n"
+                                                                   "p, li { white-space: pre-wrap; }\n"
+                                                                   "</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+                                                                   "<h2 style=\" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:x-large; font-weight:700;\">\u4f5c\u8005\uff1a </span></h2>\n"
+                                                                   "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/superjavascrip\"><span style=\" text-decoration: underline; color:#16f216;\">Github @superjavascrip</span></a> <br />\u9177\u5b89 @\u5170\u683c\u5982\u540cOfficial <br /><a href=\"https://space.bilibili.com/426825448\"><span style=\" text-decoration: underline; co"
+                                                                   "lor:#16f216;\">Bilibili @\u5170\u683c\u5982\u540c</span></a> </p>\n"
+                                                                   "<h2 style=\" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:x-large; font-weight:700;\">\u7b80\u4ecb </span></h2>\n"
+                                                                   "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u8fd9\u662f\u4e00\u4e2a\u4f7f\u7528Python\u7f16\u5199\u7684\u8c37\u6b4c\u751f\u8349\u5668\uff08GUI\uff09\uff0c\u53ef\u4ee5\u4f7f\u7528\u8c37\u6b4c\u7ffb\u8bd1\u5168\u81ea\u52a8\u7684\u5c06\u6587\u672c\u751f\u8349\u3002 </p>\n"
+                                                                   "<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:700;\">\u6211\u80fd\u591f\u505a\u51fa\u6b64\u5e94\u7528\u8981\u611f\u8c22\u8bb8\u8bb8\u591a\u591a\u7684\u5f00\u6e90\u5e94\u7528\uff0cPython\uff0cPython\u5e93googletrans\uff0cPySide6\uff08Qt\uff09\u3002\u4e0b\u9762\u662f\u94fe\u63a5"
+                                                                   "\uff1a </span></h4>\n"
+                                                                   "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python/cpython\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u89e3\u91ca\u5668\u5f00\u6e90\u4ee3\u7801</span></a> </li>\n"
+                                                                   "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u5b98\u7f51</span></a> </li>\n"
+                                                                   "<li style=\"\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/ssut/py-googletrans\"><span style=\" text-decoration: underline; color:#16f216;\">googletrans\u5e93</span></a> </li>\n"
+                                                                   "<li style=\"\" style=\" margin-"
+                                                                   "top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://pyside.org\"><span style=\" text-decoration: underline; color:#16f216;\">PySide\u5b98\u7f51</span></a> </li></ul>\n"
+                                                                   "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://superjavascrip.github.io/GoogleGrasser\"><span style=\" text-decoration: underline; color:#16f216;\">\u66f4\u591a\u8bf7\u89c1\u6211\u7684\u7f51\u7ad9</span></a></p></body></html>",
+                                                                   None))
+        self.tabs.setTabText(self.tabs.indexOf(self.about_tab),
+                             QCoreApplication.translate("application", u"\u5173\u4e8e", None))
     # retranslateUi
-
