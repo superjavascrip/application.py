@@ -18,6 +18,7 @@ import random
 import shiboken6
 import time
 import re
+import webbrowser
 
 
 class OnDeleteLanguageToAddClick(QObject):
@@ -149,6 +150,7 @@ class MainWindow(QMainWindow):
         )
 
         self.change_style(self.application_style)
+        self.setStyleSheet(self.get_qss(f"{self.application_qss}.qss"))
 
         self.ui = Ui_application()
 
@@ -156,12 +158,20 @@ class MainWindow(QMainWindow):
 
         self.ui.select_google_translate_url.addItems(Constants.SERVICE_URLS)
         self.ui.select_application_style.addItems(QStyleFactory.keys())
+        self.ui.select_application_qss.addItems(
+            [file.replace(".qss", "") for file in os.listdir("Style") if os.path.isfile(f"Style/{file}") if
+             file.split(".")[1] == "qss"]
+        )
 
         self.ui.select_google_translate_url.setCurrentIndex(
             Constants.SERVICE_URLS.index(self.google_translate_service_url)
         )
         self.ui.select_application_style.setCurrentIndex(
             QStyleFactory.keys().index(self.application_style)
+        )
+        self.ui.select_application_qss.setCurrentIndex(
+            [file.replace(".qss", "") for file in os.listdir("Style") if os.path.isfile(f"Style/{file}") if
+             file.split(".")[1] == "qss"].index(self.application_qss)
         )
 
         if self.random_grass_no_english:
@@ -172,10 +182,7 @@ class MainWindow(QMainWindow):
         self.add_language_dialog = QDialog()
         self.init_add_language_dialog()
         self.init_all_config()
-
-        self.ui.select_config.addItems(
-            ["随机"] + self.config_manager.return_all_config()
-        )
+        self.init_select_config()
 
         self.GrassingThread = QThread(self)
         self.OutputGoogleVoiceThread = QThread(self)
@@ -199,6 +206,7 @@ class MainWindow(QMainWindow):
         self.ui.add_config.clicked.connect(self.on_add_config_click)
         self.ui.import_config.clicked.connect(self.on_import_config_click)
         self.ui.export_config.clicked.connect(self.on_export_config_click)
+        self.ui.about_text_browser.anchorClicked.connect(self.open_link)
 
         self.OnStartGrassClick.set_grass_result.connect(self.set_grass_result)
         self.OnStartGrassClick.warning.connect(self.warning_dialog)
@@ -208,6 +216,9 @@ class MainWindow(QMainWindow):
         self.OnDeleteLanguageToAddClick.quit.connect(self.quit_delete_language_to_add)
         self.ui.select_google_translate_url.currentTextChanged.connect(
             self.on_select_google_translate_url_current_index_changed
+        )
+        self.ui.select_application_qss.currentTextChanged.connect(
+            self.select_application_qss_current_index_changed
         )
         self.GrassingThread.started.connect(
             lambda:
@@ -252,7 +263,10 @@ class MainWindow(QMainWindow):
             self.ui.original_text_edit.setPlainText(text)
 
     def on_copy_result_click(self) -> None:
-        pyperclip.copy(self.grass_result.text)
+        if "grass_result" in vars(self):
+            pyperclip.copy(self.grass_result.text)
+        else:
+            self.warning_dialog("错误", "没有生草结果，无法复制")
 
     def on_save_this_grass_as_config_click(self) -> None:
         if "grass_result" in vars(self):
@@ -370,7 +384,7 @@ class MainWindow(QMainWindow):
                             self.ui.all_config.selectedItems()[0].parent().text(0),
                             self.ui.all_config.selectedIndexes()[0].row()
                         )
-                        self.ui.all_config.clear()
+
                         self.init_all_config()
                     else:
                         self.config_manager.add_language(
@@ -378,7 +392,6 @@ class MainWindow(QMainWindow):
                             item.data(0, 0),
                             0
                         )
-                        self.ui.all_config.clear()
                         self.init_all_config()
                 elif len(self.ui.all_config.selectedItems()) == 0:
                     self.warning_dialog("错误", "你还没有选择要操作的配置")
@@ -391,9 +404,11 @@ class MainWindow(QMainWindow):
         for item in self.ui.all_config.selectedItems():
             if item.parent() is not None:
                 self.config_manager.remove_language(item.parent().indexOfChild(item), item.parent().data(0, 0))
+                self.init_select_config()
                 shiboken6.delete(item)
             else:
                 self.config_manager.remove_config(item.data(0, 0))
+                self.init_select_config()
                 shiboken6.delete(item)
 
     def on_add_config_click(self) -> None:
@@ -408,8 +423,8 @@ class MainWindow(QMainWindow):
                 self.warning_dialog("错误", "请重新输入")
             else:
                 self.config_manager.new_config([], config_name)
-                self.ui.all_config.clear()
                 self.init_all_config()
+                self.init_select_config()
 
     def on_add_language_dialog_add_language_click(self) -> None:
         if self.ui.all_config.selectedItems()[0].parent() is not None:
@@ -418,20 +433,15 @@ class MainWindow(QMainWindow):
                 self.ui.all_config.selectedItems()[0].parent().text(0),
                 self.ui.all_config.selectedIndexes()[0].row()
             )
-            self.ui.all_config.clear()
-            self.init_all_config()
-            self.add_language_dialog.language_to_add.clearSelection()
-            self.add_language_dialog.all_language.clearSelection()
         else:
             self.config_manager.add_language(
                 self.get_languages(self.add_language_dialog.language_to_add),
                 self.ui.all_config.selectedItems()[0].text(0),
                 0
             )
-            self.ui.all_config.clear()
-            self.init_all_config()
-            self.add_language_dialog.language_to_add.clearSelection()
-            self.add_language_dialog.all_language.clearSelection()
+        self.init_all_config()
+        self.add_language_dialog.language_to_add.clearSelection()
+        self.add_language_dialog.all_language.clearSelection()
 
     def on_import_config_click(self) -> None:
         file_path, ok_pressed = QFileDialog.getOpenFileName(
@@ -451,6 +461,13 @@ class MainWindow(QMainWindow):
         )
         self.change_style(self.ui.select_application_style.currentText())
 
+    def select_application_qss_current_index_changed(self) -> None:
+        self.settings_manager.manage_setting(
+            "application_qss",
+            self.ui.select_application_qss.currentText()
+        )
+        self.setStyleSheet(self.get_qss(f"{self.ui.select_application_qss.currentText()}.qss"))
+
     def on_add_language_dialog_add_language_to_add_click(self) -> None:
         for item in self.add_language_dialog.all_language.selectedItems():
             language_item = QTreeWidgetItem(self.add_language_dialog.language_to_add)
@@ -464,7 +481,7 @@ class MainWindow(QMainWindow):
     def on_add_language_dialog_clean_all_language_click(self) -> None:
         self.add_language_dialog.language_to_add.clear()
 
-    def on_add_language_dialog_delete_language_to_add(self) -> None:
+    def on_add_language_dialog_delete_language_to_add_click(self) -> None:
         if len(self.add_language_dialog.language_to_add.selectedItems()) == 0:
             QMessageBox(
                 QMessageBox.Warning,
@@ -475,6 +492,10 @@ class MainWindow(QMainWindow):
             raise Constants.SelectItemError("你还没有选择要操作的语言")
         else:
             self.DeleteLanguageToAddThread.start()
+
+    @staticmethod
+    def open_link(url: QUrl) -> None:
+        webbrowser.open(url.toString())
 
     def set_grass_result(
             self,
@@ -504,6 +525,12 @@ class MainWindow(QMainWindow):
             parent=self
         ).exec_()
 
+    def init_select_config(self) -> None:
+        self.ui.select_config.clear()
+        self.ui.select_config.addItems(
+            ["随机"] + self.config_manager.return_all_config()
+        )
+
     def init_grasser(self) -> None:
         self.grasser = Grasser.GoogleGrasser(
             self.ui.set_config_file_name.text(),
@@ -512,6 +539,7 @@ class MainWindow(QMainWindow):
         )
 
     def init_all_config(self) -> None:
+        self.ui.all_config.clear()
         config_name_list = self.config_manager.return_all_config()
         self.ui.all_config.setColumnCount(2)
         self.ui.all_config.setSelectionMode(QAbstractItemView.ExtendedSelection)
@@ -653,7 +681,7 @@ class MainWindow(QMainWindow):
             self.on_add_language_dialog_clean_all_language_click
         )
         self.add_language_dialog.delete_language_to_add.clicked.connect(
-            self.on_add_language_dialog_delete_language_to_add
+            self.on_add_language_dialog_delete_language_to_add_click
         )
 
     @staticmethod
@@ -675,6 +703,11 @@ class MainWindow(QMainWindow):
             raise NameError("没有此主题，使用默认主题")
         else:
             QApplication.setStyle(style_name)
+
+    @staticmethod
+    def get_qss(file_name) -> str:
+        with open(f"Style/{file_name}", "r+") as qss_file:
+            return qss_file.read()
 
     def closeEvent(self, event: QCloseEvent) -> None:
         self.add_language_dialog.close()

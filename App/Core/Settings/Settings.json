@@ -1,6 +1,7 @@
 {
     "Settings": {
-        "application_style": "windowsvista",
+        "application_qss": "Default",
+        "application_style": "Windows",
         "config_file_name": "Config",
         "google_translate_service_url": "translate.google.cn",
         "random_grass_no_english": true

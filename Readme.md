@@ -52,6 +52,7 @@ python Application.py
         + Grasser.py(生草器主代码文件)
         + SettingsManager.py(设置管理器代码文件)
         + UI_GoogleGrasser.py(程序主UI代码文件，由PySide6-uic 用 UI文件夹里的UI_GoogleGrasser.ui文件自动生成)
+        + Style(程序美化文件目录)
     - UI(UI文件目录，由PySide6-uic 用 UI文件夹里的AddLanguageDialog.ui文件自动生成)
         + UI_GoogleGrasser.ui(PySide6UI文件，使用QtDesign编辑)
 * LICENSE(开源协议)
@@ -62,3 +63,7 @@ python Application.py
 
 * 将配置界面功能实装
 * 增加代理设置
+
+##### 鸣谢
+
+[Github项目QSS](https://github.com/GTRONICK/QSS)

@@ -46,3 +46,4 @@ class SettingsManager(object):
             "random_grass_no_english")
         obj.application_style = self.get_setting("application_style")
         obj.config_file_name = self.get_setting("config_file_name")
+        obj.application_qss = self.get_setting("application_qss")
