@@ -4,6 +4,5 @@ googletrans==4.0.0-rc.1
 pyperclip==1.8.2
 requests==2.25.1
 pydub==0.24.1
-pygoogletranslation==2.0.6
 PyExecJS==1.5.1
 SIP==6.0.3
