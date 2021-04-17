@@ -660,7 +660,7 @@ class MainWindow(QMainWindow):
         self.add_language_dialog.second_prompt.setText(
             QCoreApplication.translate(
                 u"Dialog",
-                u"\u8981\u6dfb\u52a0\u7684\u8bed\u8a00",
+                "\u8981\u6dfb\u52a0\u7684\u8bed\u8a00",
                 None
             )
         )

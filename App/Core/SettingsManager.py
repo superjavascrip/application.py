@@ -8,7 +8,7 @@ class SettingsManager(object):
     def manage_setting(
             self,
             setting_name: str,
-            value: str or bool
+            value: str
     ) -> None:
         with open(self.SETTINGS_FILE, "r+") as settings_file_read:
             settings_dict = json.loads(settings_file_read.read())
@@ -28,7 +28,7 @@ class SettingsManager(object):
     def get_setting(
             self,
             setting_name: str
-    ) -> str or bool:
+    ) -> str:
         with open(self.SETTINGS_FILE, "r+") as settings_file:
             settings_dict = json.loads(settings_file.read())
             if setting_name not in settings_dict["Settings"]:

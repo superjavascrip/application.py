@@ -67,3 +67,4 @@ python Application.py
 ##### 鸣谢
 
 [Github项目QSS](https://github.com/GTRONICK/QSS)
+[BreezeStyleSheets](https://github.com/Alexhuszagh/BreezeStyleSheets)

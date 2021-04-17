@@ -35,38 +35,6 @@
         <string>主页</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="2" column="3" rowspan="2">
-         <layout class="QGridLayout" name="second_grid_layout">
-          <item row="3" column="0">
-           <widget class="QPushButton" name="save_result">
-            <property name="text">
-             <string>保存结果</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QPushButton" name="output_google_voice">
-            <property name="text">
-             <string>导出谷歌语音</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QPushButton" name="save_this_grass_as_config">
-            <property name="text">
-             <string>将此次生草保存为配置</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="copy_result">
-            <property name="text">
-             <string>复制结果</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
         <item row="1" column="2" colspan="2">
          <layout class="QHBoxLayout" name="grass_content_layout">
           <item>
@@ -77,7 +45,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QTextBrowser" name="grass_result_browser"/>
+           <widget class="QTextBrowser" name="grass_result_browser">
+            <property name="openLinks">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -128,6 +100,38 @@
             </property>
             <property name="maximum">
              <number>1000000</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="3" rowspan="2">
+         <layout class="QGridLayout" name="second_grid_layout">
+          <item row="3" column="0">
+           <widget class="QPushButton" name="save_result">
+            <property name="text">
+             <string>保存结果</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QPushButton" name="output_google_voice">
+            <property name="text">
+             <string>导出谷歌语音</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="save_this_grass_as_config">
+            <property name="text">
+             <string>将此次生草保存为配置</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="copy_result">
+            <property name="text">
+             <string>复制结果</string>
             </property>
            </widget>
           </item>
@@ -244,6 +248,15 @@
         <string>配置</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_8">
+        <item row="1" column="0">
+         <widget class="QTreeWidget" name="all_config">
+          <column>
+           <property name="text">
+            <string notr="true">1</string>
+           </property>
+          </column>
+         </widget>
+        </item>
         <item row="1" column="1">
          <layout class="QVBoxLayout" name="config_tab_button_group">
           <item>
@@ -304,15 +317,6 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QTreeWidget" name="all_config">
-          <column>
-           <property name="text">
-            <string notr="true">1</string>
-           </property>
-          </column>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="about_tab">
@@ -324,23 +328,23 @@
          <widget class="QTextBrowser" name="about_text_browser">
           <property name="html">
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;关于作者 &lt;/span&gt;&lt;/h3&gt;
-&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://www.github.com/superjavascrip&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Github @Superjavascrip&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://space.bilibili.com/426825448&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Bilibili @兰格如同&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;酷安 @兰格如同Official &lt;/li&gt;&lt;/ul&gt;
-&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;简介 &lt;/span&gt;&lt;/h3&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;这是一个使用Python编写的谷歌生草器（GUI），可以使用谷歌翻译全自动的将文本生草。 &lt;/span&gt;&lt;/p&gt;
-&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;鸣谢 &lt;/span&gt;&lt;/h3&gt;
-&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/python/cpython&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Python解释器开源代码&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://www.python.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Python官网&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/ssut/py-googletrans&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;googletrans库&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://pyside.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;PySide官网&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/GTRONICK/QSS&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;QSS项目&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
-&lt;li style=&quot; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/Alexhuszagh/BreezeStyleSheets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;BreezeStyleSheets&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;&lt;/ul&gt;
-&lt;h4 align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://superjavascrip.github.io/GoogleGrasser&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600; text-decoration: underline; color:#16f216;&quot;&gt;更多请看我的网站&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;/h4&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:large; font-weight:600;&quot;&gt;关于作者 &lt;/span&gt;&lt;/h3&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://www.github.com/superjavascrip&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Github @Superjavascrip&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://space.bilibili.com/426825448&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Bilibili @兰格如同&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;酷安 @兰格如同Official &lt;/li&gt;&lt;/ul&gt;
+&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:large; font-weight:600;&quot;&gt;简介 &lt;/span&gt;&lt;/h3&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-weight:600;&quot;&gt;这是一个使用Python编写的谷歌生草器（GUI），可以使用谷歌翻译全自动的将文本生草。 &lt;/span&gt;&lt;/p&gt;
+&lt;h3 align=&quot;center&quot; style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:large; font-weight:600;&quot;&gt;鸣谢 &lt;/span&gt;&lt;/h3&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/python/cpython&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Python解释器开源代码&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://www.python.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;Python官网&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/ssut/py-googletrans&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;googletrans库&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://pyside.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;PySide官网&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/GTRONICK/QSS&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;QSS项目&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/Alexhuszagh/BreezeStyleSheets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;BreezeStyleSheets&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;&lt;/ul&gt;
+&lt;h4 align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://superjavascrip.github.io/GoogleGrasser&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600; text-decoration: underline; color:#16f216;&quot;&gt;更多请看我的网站&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;/h4&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="openExternalLinks">
            <bool>true</bool>

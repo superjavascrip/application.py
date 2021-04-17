@@ -37,11 +37,11 @@ class GoogleGrasser(object):
     def get_random_grass(
             self,
             original_text: str,
-            frequency: int = 20
+            grass_frequency: int = 20
     ) -> GrassResult:
         text = original_text
         language_list = []
-        for i in range(frequency + 1):
+        for i in range(grass_frequency + 1):
             if i != 0:
                 random_language = random.choice(self.LANGUAGES)
                 language_list.append(random_language)
@@ -72,11 +72,11 @@ class GoogleGrasser(object):
             self,
             input_txt: str,
             output_txt: str,
-            frequency: int = 20
+            grass_frequency: int = 20
     ) -> None:
         with open(input_txt, "r", encoding="utf-8") as input_txt:
             input_text = input_txt.read()
-            random_grass = self.get_random_grass(input_text, frequency)
+            random_grass = self.get_random_grass(input_text, grass_frequency)
             with open(output_txt, "w+", encoding="utf-8") as output_txt:
                 output_txt.write(random_grass.text)
 
@@ -84,11 +84,11 @@ class GoogleGrasser(object):
             self,
             original_text: str,
             config_name: str,
-            frequency: int = 20
+            grass_grass_frequency: int = 20
     ) -> GrassResult:
         config = self.config_manager.return_config(config_name)
         text = original_text
-        for _ in range(frequency):
+        for _ in range(grass_grass_frequency):
             for config_index in range(len(config)):
                 if config_index != 0:
                     text = self.translator.translate(
@@ -112,17 +112,17 @@ class GoogleGrasser(object):
 
     def output_config_grass(
             self,
-            input_txt,
-            output_text,
-            frequency,
-            config
+            input_txt: str,
+            output_txt: str,
+            config_name: str,
+            grass_frequency: int = 20,
     ) -> None:
         with open(input_txt, "r", encoding="utf-8") as input_txt:
             input_text = input_txt.read()
             config_grass = self.get_config_grass(
                 input_text,
-                frequency,
-                config
+                config_name,
+                grass_frequency
             )
-            with open(output_text, "w+", encoding="utf-8") as output_txt:
+            with open(output_txt, "w+", encoding="utf-8") as output_txt:
                 output_txt.write(config_grass.text)
