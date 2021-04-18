@@ -617,50 +617,50 @@ class MainWindow(QMainWindow):
 
         self.add_language_dialog.setWindowTitle(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u6dfb\u52a0\u8bed\u8a00",
                 None
             )
         )
         self.add_language_dialog.add_language_to_add.setText(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u6dfb\u52a0\u8981\u6dfb\u52a0\u7684\u8bed\u8a00",
                 None
             )
         )
         self.add_language_dialog.add_language.setText(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u6dfb\u52a0",
                 None
             )
         )
         self.add_language_dialog.delete_language_to_add.setText(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u5220\u9664\u8bed\u8a00",
                 None
             )
         )
         self.add_language_dialog.clean_all_language.setText(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u6e05\u9664",
                 None
             )
         )
         self.add_language_dialog.first_prompt.setText(
             QCoreApplication.translate(
-                b"Dialog",
+                u"Dialog",
                 u"\u5168\u90e8\u8bed\u8a00",
                 None
             )
         )
         self.add_language_dialog.second_prompt.setText(
             QCoreApplication.translate(
-                b"Dialog",
-                u"\u8981\u6dfb\u52a0\u7684\u8bed\u8a00",
+                u"Dialog",
+                "\u8981\u6dfb\u52a0\u7684\u8bed\u8a00",
                 None
             )
         )
