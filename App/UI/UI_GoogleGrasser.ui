@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Core/res/application-icon.svg</normaloff>../Core/res/application-icon.svg</iconset>
+    <normaloff>C:/Users/JavaS/.designer/Core/res/application-icon.svg</normaloff>C:/Users/JavaS/.designer/Core/res/application-icon.svg</iconset>
   </property>
   <widget class="QWidget" name="content_window">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -344,7 +344,7 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://pyside.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;PySide官网&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
 &lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/GTRONICK/QSS&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;QSS项目&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
 &lt;li style=&quot; font-family:'SimSun'; font-weight:600;&quot; align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/Alexhuszagh/BreezeStyleSheets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#16f216;&quot;&gt;BreezeStyleSheets&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;&lt;/ul&gt;
-&lt;h4 align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://superjavascrip.github.io/GoogleGrasser&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600; text-decoration: underline; color:#16f216;&quot;&gt;更多请看我的网站&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;/h4&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;h4 align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://superjavascrip.github.io/2021/04/30/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%EF%BC%9AGoogleGrasser/&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600; text-decoration: underline; color:#16f216;&quot;&gt;更多请看我的网站&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:medium; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;/h4&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="openExternalLinks">
            <bool>true</bool>
