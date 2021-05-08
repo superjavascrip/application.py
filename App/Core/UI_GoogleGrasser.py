@@ -365,8 +365,7 @@ class Ui_application(object):
 "<li style=\" font-family:'SimSun'; font-w"
                         "eight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/GTRONICK/QSS\"><span style=\" text-decoration: underline; color:#16f216;\">QSS\u9879\u76ee</span></a> </li>\n"
 "<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\"><span style=\" text-decoration: underline; color:#16f216;\">BreezeStyleSheets</span></a> </li></ul>\n"
-"<h4 align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://superjavascrip.github.io/2021/04/30/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%EF%BC%9AGoogleGrasser/\"><span style=\" font-family:'SimSun'; font-size:medium; font-weight:600; text-decoration: underline; color:"
-                        "#16f216;\">\u66f4\u591a\u8bf7\u770b\u6211\u7684\u7f51\u7ad9</span></a><span style=\" font-family:'SimSun'; font-size:medium; font-weight:600;\"> </span></h4></body></html>", None))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:medium; font-weight:700;\"><br /></p></body></html>", None))
         self.tabs.setTabText(self.tabs.indexOf(self.about_tab), QCoreApplication.translate("application", u"\u5173\u4e8e", None))
     # retranslateUi
 
