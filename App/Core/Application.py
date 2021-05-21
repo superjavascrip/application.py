@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from typing import List
+
 from UI_GoogleGrasser import Ui_application
 
 from PySide6.QtWidgets import *
@@ -26,7 +29,7 @@ class OnDeleteLanguageToAddClick(QObject):
 
     def __init__(
             self,
-            parent
+            parent: QObject
     ):
         super(OnDeleteLanguageToAddClick, self).__init__(parent)
 
@@ -48,7 +51,7 @@ class OnOutputGoogleVoiceClick(QObject):
 
     def __init__(
             self,
-            parent
+            parent: QObject
     ):
         super(OnOutputGoogleVoiceClick, self).__init__(parent)
         self.google_voice = GoogleVoice()
@@ -493,10 +496,6 @@ class MainWindow(QMainWindow):
         else:
             self.DeleteLanguageToAddThread.start()
 
-    @staticmethod
-    def open_link(url: QUrl) -> None:
-        webbrowser.open(url.toString())
-
     def set_grass_result(
             self,
             grass_result: Grasser.GrassResult
@@ -685,7 +684,7 @@ class MainWindow(QMainWindow):
         )
 
     @staticmethod
-    def get_languages(tree_widget: QTreeWidget) -> list:
+    def get_languages(tree_widget: QTreeWidget) -> List[str]:
         languages = []
         item = QTreeWidgetItemIterator(tree_widget)
         for _ in range(tree_widget.topLevelItemCount()):
@@ -705,9 +704,13 @@ class MainWindow(QMainWindow):
             QApplication.setStyle(style_name)
 
     @staticmethod
-    def get_qss(file_name) -> str:
+    def get_qss(file_name: str) -> str:
         with open(f"Style/{file_name}", "r+") as qss_file:
             return qss_file.read()
+
+    @staticmethod
+    def open_link(url: QUrl) -> None:
+        webbrowser.open(url.toString())
 
     def closeEvent(self, event: QCloseEvent) -> None:
         self.add_language_dialog.close()

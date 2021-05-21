@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from typing import List
+
 import requests
 from pydub import AudioSegment
 import execjs
@@ -18,7 +21,7 @@ class GoogleVoice(object):
 
     @staticmethod
     def splicing_audio(
-            file_list: list,
+            file_list: List[str],
             output_file
     ) -> None:
         try:

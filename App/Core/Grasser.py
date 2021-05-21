@@ -1,5 +1,7 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 import random
+from typing import List, Union
+
 import langid
 
 
@@ -7,7 +9,7 @@ class GrassResult(object):
     def __init__(
             self,
             text: str,
-            language_list: list or None
+            language_list: Union[List[str], None]
     ):
         self.text = text
         self.language_list = language_list

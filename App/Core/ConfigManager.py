@@ -1,6 +1,7 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 import json
 import os
+from typing import List
 
 
 class ConfigManager(object):
@@ -10,14 +11,14 @@ class ConfigManager(object):
     ):
         self.config_file = f"Config/{config_file_name}.json"
 
-    def return_all_config(self) -> list:
+    def return_all_config(self) -> List[str]:
         with open(self.config_file, "r+") as config_file_read:
             config_dict = json.load(config_file_read)
         return list(config_dict.keys())
 
     def new_config(
             self,
-            language_list: list,
+            language_list: List[str],
             config_name: str
     ) -> None:
         with open(self.config_file, "r+") as config_file_read:
@@ -59,7 +60,7 @@ class ConfigManager(object):
     def return_config(
             self,
             config_name: str
-    ) -> list:
+    ) -> List[str]:
         with open(self.config_file, "r+") as config_file_read:
             config_dict = json.load(config_file_read)
         if config_name in config_dict:
@@ -81,7 +82,7 @@ class ConfigManager(object):
 
     def add_language(
             self,
-            language_list: list,
+            language_list: List[str],
             config_name: str,
             add_index: int
     ) -> None:
@@ -124,7 +125,7 @@ class ConfigManager(object):
 
     def export_config(
             self,
-            config_name_list: list,
+            config_name_list: List[str],
             export_config_file_path: str
     ) -> None:
         with open(self.config_file, "r+") as config_file_read:
