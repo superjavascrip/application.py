@@ -19,7 +19,7 @@ class Ui_application(object):
             application.setObjectName(u"application")
         application.resize(800, 600)
         icon = QIcon()
-        icon.addFile(u"C:/Users/JavaS/.designer/Core/res/application-icon.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"res/application-icon.svg", QSize(), QIcon.Normal, QIcon.Off)
         application.setWindowIcon(icon)
         self.content_window = QWidget(application)
         self.content_window.setObjectName(u"content_window")

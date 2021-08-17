@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Union
 
+import json
+
 
 class SettingsManager(object):
     def __init__(self):

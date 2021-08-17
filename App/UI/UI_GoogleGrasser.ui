@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>C:/Users/JavaS/.designer/Core/res/application-icon.svg</normaloff>C:/Users/JavaS/.designer/Core/res/application-icon.svg</iconset>
+    <normaloff>res/application-icon.svg</normaloff>res/application-icon.svg</iconset>
   </property>
   <widget class="QWidget" name="content_window">
    <layout class="QGridLayout" name="gridLayout_2">
