@@ -28,10 +28,9 @@ class OnDeleteLanguageToAddClick(QObject):
     quit = Signal(name="exit")
 
     def __init__(
-            self,
-            parent: QObject
+            self
     ):
-        super(OnDeleteLanguageToAddClick, self).__init__(parent)
+        super(OnDeleteLanguageToAddClick, self).__init__()
 
     def on_click(
             self,
@@ -50,10 +49,9 @@ class OnOutputGoogleVoiceClick(QObject):
     quit = Signal(name="exit")
 
     def __init__(
-            self,
-            parent: QObject
+            self
     ):
-        super(OnOutputGoogleVoiceClick, self).__init__(parent)
+        super(OnOutputGoogleVoiceClick, self).__init__()
         self.google_voice = GoogleVoice()
 
     def output_grass_voice(
@@ -64,7 +62,8 @@ class OnOutputGoogleVoiceClick(QObject):
         grass_string = grass_result.text
         try:
             if len(grass_string) <= 198:
-                self.google_voice.output_voice(grass_string, f"Output/{output_file}")
+                self.google_voice.output_voice(
+                    grass_string, f"Output/{output_file}")
             else:
                 number = len(grass_string) // 198
                 number_of_remaining_digits = len(grass_string) % 198
@@ -75,7 +74,8 @@ class OnOutputGoogleVoiceClick(QObject):
                         __CacheString__
                     )
                 self.google_voice.output_voice(
-                    grass_string[number * 198:number * 198 + number_of_remaining_digits],
+                    grass_string[number * 198:number *
+                                 198 + number_of_remaining_digits],
                     "__Cache__/__Cache__{}.mp3".format(number + 1)
                 )
                 input_list = []
@@ -103,10 +103,9 @@ class OnStartGrassClick(QObject):
     quit = Signal(name="exit")
 
     def __init__(
-            self,
-            parent
+            self
     ):
-        super(OnStartGrassClick, self).__init__(parent)
+        super(OnStartGrassClick, self).__init__()
 
     def on_click(
             self,
@@ -187,25 +186,31 @@ class MainWindow(QMainWindow):
         self.init_all_config()
         self.init_select_config()
 
-        self.GrassingThread = QThread(self)
+        self.GrassingThread = QThread()
         self.OutputGoogleVoiceThread = QThread(self)
         self.DeleteLanguageToAddThread = QThread(self)
-        self.OnStartGrassClick = OnStartGrassClick(self)
+        self.OnStartGrassClick = OnStartGrassClick()
         self.OnStartGrassClick.moveToThread(self.GrassingThread)
-        self.OnOutputGoogleVoiceClick = OnOutputGoogleVoiceClick(self)
-        self.OnOutputGoogleVoiceClick.moveToThread(self.OutputGoogleVoiceThread)
-        self.OnDeleteLanguageToAddClick = OnDeleteLanguageToAddClick(self)
-        self.OnDeleteLanguageToAddClick.moveToThread(self.DeleteLanguageToAddThread)
+        self.OnOutputGoogleVoiceClick = OnOutputGoogleVoiceClick()
+        self.OnOutputGoogleVoiceClick.moveToThread(
+            self.OutputGoogleVoiceThread)
+        self.OnDeleteLanguageToAddClick = OnDeleteLanguageToAddClick()
+        self.OnDeleteLanguageToAddClick.moveToThread(
+            self.DeleteLanguageToAddThread)
 
         self.ui.start_grass.clicked.connect(self.on_start_grass_click)
         self.ui.open_file.clicked.connect(self.on_open_file_click)
         self.ui.copy_result.clicked.connect(self.on_copy_result_click)
-        self.ui.save_this_grass_as_config.clicked.connect(self.on_save_this_grass_as_config_click)
+        self.ui.save_this_grass_as_config.clicked.connect(
+            self.on_save_this_grass_as_config_click)
         self.ui.save_result.clicked.connect(self.on_save_grass_result_click)
         self.ui.add_language.clicked.connect(self.on_add_language_click)
-        self.ui.output_google_voice.clicked.connect(self.on_output_google_voice_click)
-        self.ui.add_random_language.clicked.connect(self.on_add_random_language_click)
-        self.ui.delete_config_and_language.clicked.connect(self.delete_config_and_language)
+        self.ui.output_google_voice.clicked.connect(
+            self.on_output_google_voice_click)
+        self.ui.add_random_language.clicked.connect(
+            self.on_add_random_language_click)
+        self.ui.delete_config_and_language.clicked.connect(
+            self.delete_config_and_language)
         self.ui.add_config.clicked.connect(self.on_add_config_click)
         self.ui.import_config.clicked.connect(self.on_import_config_click)
         self.ui.export_config.clicked.connect(self.on_export_config_click)
@@ -214,9 +219,11 @@ class MainWindow(QMainWindow):
         self.OnStartGrassClick.set_grass_result.connect(self.set_grass_result)
         self.OnStartGrassClick.warning.connect(self.warning_dialog)
         self.OnStartGrassClick.quit.connect(self.quit_grassing_thread)
-        self.OnOutputGoogleVoiceClick.quit.connect(self.quit_output_google_voice_click)
+        self.OnOutputGoogleVoiceClick.quit.connect(
+            self.quit_output_google_voice_click)
         self.OnOutputGoogleVoiceClick.warning.connect(self.warning_dialog)
-        self.OnDeleteLanguageToAddClick.quit.connect(self.quit_delete_language_to_add)
+        self.OnDeleteLanguageToAddClick.quit.connect(
+            self.quit_delete_language_to_add)
         self.ui.select_google_translate_url.currentTextChanged.connect(
             self.on_select_google_translate_url_current_index_changed
         )
@@ -259,7 +266,8 @@ class MainWindow(QMainWindow):
         self.GrassingThread.start()
 
     def on_open_file_click(self) -> None:
-        file_name = QFileDialog.getOpenFileName(self, "选择要生草的txt文件", "", "Txt files(*.txt)")
+        file_name = QFileDialog.getOpenFileName(
+            self, "选择要生草的txt文件", "", "Txt files(*.txt)")
         if file_name[0] != "":
             with open(file_name[0], "r+", encoding="utf-8") as file:
                 text = file.read()
@@ -283,7 +291,8 @@ class MainWindow(QMainWindow):
                     QLineEdit.Normal,
                     "")
                 if ok_pressed:
-                    self.config_manager.new_config(self.grass_result.language_list, config_name)
+                    self.config_manager.new_config(
+                        self.grass_result.language_list, config_name)
         else:
             self.warning_dialog("错误", "没有生草结果，无法生成配置")
 
@@ -384,7 +393,8 @@ class MainWindow(QMainWindow):
                     if item.parent() is not None:
                         self.config_manager.add_language(
                             language_list,
-                            self.ui.all_config.selectedItems()[0].parent().text(0),
+                            self.ui.all_config.selectedItems()[
+                                0].parent().text(0),
                             self.ui.all_config.selectedIndexes()[0].row()
                         )
 
@@ -406,7 +416,8 @@ class MainWindow(QMainWindow):
     def delete_config_and_language(self) -> None:
         for item in self.ui.all_config.selectedItems():
             if item.parent() is not None:
-                self.config_manager.remove_language(item.parent().indexOfChild(item), item.parent().data(0, 0))
+                self.config_manager.remove_language(
+                    item.parent().indexOfChild(item), item.parent().data(0, 0))
                 self.init_select_config()
                 shiboken6.delete(item)
             else:
@@ -469,14 +480,17 @@ class MainWindow(QMainWindow):
             "application_qss",
             self.ui.select_application_qss.currentText()
         )
-        self.setStyleSheet(self.get_qss(f"{self.ui.select_application_qss.currentText()}.qss"))
+        self.setStyleSheet(self.get_qss(
+            f"{self.ui.select_application_qss.currentText()}.qss"))
 
     def on_add_language_dialog_add_language_to_add_click(self) -> None:
         for item in self.add_language_dialog.all_language.selectedItems():
-            language_item = QTreeWidgetItem(self.add_language_dialog.language_to_add)
+            language_item = QTreeWidgetItem(
+                self.add_language_dialog.language_to_add)
             language_item.setText(0, item.text(0))
             language_item.setIcon(0, item.icon(0))
-            language_item.setText(1, Constants.LANGUAGE_TRANSLATE.get(item.text(0)))
+            language_item.setText(
+                1, Constants.LANGUAGE_TRANSLATE.get(item.text(0)))
             language_item.setIcon(1, item.icon(1))
         self.add_language_dialog.language_to_add.clearSelection()
         self.add_language_dialog.all_language.clearSelection()
@@ -541,77 +555,106 @@ class MainWindow(QMainWindow):
         self.ui.all_config.clear()
         config_name_list = self.config_manager.return_all_config()
         self.ui.all_config.setColumnCount(2)
-        self.ui.all_config.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.ui.all_config.setSelectionMode(
+            QAbstractItemView.ExtendedSelection)
         self.ui.all_config.setHeaderLabels(["配置名", "语言中文名称"])
         self.ui.all_config.setColumnWidth(0, 130)
         for config_name_index in range(len(config_name_list)):
             config_item = QTreeWidgetItem(self.ui.all_config)
             config_item.setText(0, config_name_list[config_name_index])
             config_item.setIcon(0, QIcon("res/config.svg"))
-            config = self.config_manager.return_config(config_name_list[config_name_index])
+            config = self.config_manager.return_config(
+                config_name_list[config_name_index])
             for config_index in range(len(config)):
                 language_item = QTreeWidgetItem(config_item)
                 language_item.setText(0, config[config_index])
-                language_item.setText(1, Constants.LANGUAGE_TRANSLATE[config[config_index]])
+                language_item.setText(
+                    1, Constants.LANGUAGE_TRANSLATE[config[config_index]])
                 language_item.setIcon(0, QIcon("res/language.svg"))
                 language_item.setIcon(1, QIcon("res/language.svg"))
 
     def init_add_language_dialog(self) -> None:
         self.add_language_dialog.resize(450, 250)
         icon = QIcon()
-        icon.addFile(u"res/application-icon.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"res/application-icon.svg",
+                     QSize(), QIcon.Normal, QIcon.Off)
 
         self.add_language_dialog.setWindowIcon(icon)
-        self.add_language_dialog.gridLayout = QGridLayout(self.add_language_dialog)
+        self.add_language_dialog.gridLayout = QGridLayout(
+            self.add_language_dialog)
         self.add_language_dialog.gridLayout.setObjectName(u"gridLayout")
-        self.add_language_dialog.all_language = QTreeWidget(self.add_language_dialog)
+        self.add_language_dialog.all_language = QTreeWidget(
+            self.add_language_dialog)
         self.add_language_dialog.all_language.setObjectName(u"all_language")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.all_language, 1, 0, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.all_language, 1, 0, 1, 1)
 
-        self.add_language_dialog.add_language_to_add = QPushButton(self.add_language_dialog)
-        self.add_language_dialog.add_language_to_add.setObjectName(u"add_language_to_add")
+        self.add_language_dialog.add_language_to_add = QPushButton(
+            self.add_language_dialog)
+        self.add_language_dialog.add_language_to_add.setObjectName(
+            u"add_language_to_add")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.add_language_to_add, 2, 0, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.add_language_to_add, 2, 0, 1, 1)
 
-        self.add_language_dialog.add_language = QPushButton(self.add_language_dialog)
+        self.add_language_dialog.add_language = QPushButton(
+            self.add_language_dialog)
         self.add_language_dialog.add_language.setObjectName(u"add_language")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.add_language, 2, 1, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.add_language, 2, 1, 1, 1)
 
-        self.add_language_dialog.language_to_add = QTreeWidget(self.add_language_dialog)
-        self.add_language_dialog.language_to_add.setObjectName(u"language_to_add")
+        self.add_language_dialog.language_to_add = QTreeWidget(
+            self.add_language_dialog)
+        self.add_language_dialog.language_to_add.setObjectName(
+            u"language_to_add")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.language_to_add, 1, 1, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.language_to_add, 1, 1, 1, 1)
 
-        self.add_language_dialog.delete_language_to_add = QPushButton(self.add_language_dialog)
-        self.add_language_dialog.delete_language_to_add.setObjectName(u"delete_language_to_add")
+        self.add_language_dialog.delete_language_to_add = QPushButton(
+            self.add_language_dialog)
+        self.add_language_dialog.delete_language_to_add.setObjectName(
+            u"delete_language_to_add")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.delete_language_to_add, 3, 0, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.delete_language_to_add, 3, 0, 1, 1)
 
-        self.add_language_dialog.clean_all_language = QPushButton(self.add_language_dialog)
-        self.add_language_dialog.clean_all_language.setObjectName(u"clean_all_language")
+        self.add_language_dialog.clean_all_language = QPushButton(
+            self.add_language_dialog)
+        self.add_language_dialog.clean_all_language.setObjectName(
+            u"clean_all_language")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.clean_all_language, 3, 1, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.clean_all_language, 3, 1, 1, 1)
 
-        self.add_language_dialog.first_prompt = QLabel(self.add_language_dialog)
+        self.add_language_dialog.first_prompt = QLabel(
+            self.add_language_dialog)
         self.add_language_dialog.first_prompt.setObjectName(u"first_prompt")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.first_prompt, 0, 0, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.first_prompt, 0, 0, 1, 1)
 
-        self.add_language_dialog.second_prompt = QLabel(self.add_language_dialog)
+        self.add_language_dialog.second_prompt = QLabel(
+            self.add_language_dialog)
         self.add_language_dialog.second_prompt.setObjectName(u"second_prompt")
 
-        self.add_language_dialog.gridLayout.addWidget(self.add_language_dialog.second_prompt, 0, 1, 1, 1)
+        self.add_language_dialog.gridLayout.addWidget(
+            self.add_language_dialog.second_prompt, 0, 1, 1, 1)
 
         self.add_language_dialog.all_language.setColumnCount(2)
-        self.add_language_dialog.all_language.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.add_language_dialog.all_language.setHeaderLabels(["语言名", "语言中文名称"])
+        self.add_language_dialog.all_language.setSelectionMode(
+            QAbstractItemView.ExtendedSelection)
+        self.add_language_dialog.all_language.setHeaderLabels(
+            ["语言名", "语言中文名称"])
         self.add_language_dialog.all_language.setColumnWidth(0, 90)
 
         self.add_language_dialog.language_to_add.setColumnCount(2)
-        self.add_language_dialog.language_to_add.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.add_language_dialog.language_to_add.setHeaderLabels(["语言名", "语言中文名称"])
+        self.add_language_dialog.language_to_add.setSelectionMode(
+            QAbstractItemView.ExtendedSelection)
+        self.add_language_dialog.language_to_add.setHeaderLabels(
+            ["语言名", "语言中文名称"])
         self.add_language_dialog.language_to_add.setColumnWidth(0, 90)
 
         self.add_language_dialog.setWindowTitle(
@@ -664,10 +707,12 @@ class MainWindow(QMainWindow):
             )
         )
         for language in Constants.LANGUAGE_TRANSLATE:
-            language_item = QTreeWidgetItem(self.add_language_dialog.all_language)
+            language_item = QTreeWidgetItem(
+                self.add_language_dialog.all_language)
             language_item.setText(0, language)
             language_item.setIcon(0, QIcon("res/language.svg"))
-            language_item.setText(1, Constants.LANGUAGE_TRANSLATE.get(language))
+            language_item.setText(
+                1, Constants.LANGUAGE_TRANSLATE.get(language))
             language_item.setIcon(1, QIcon("res/language.svg"))
 
         self.add_language_dialog.add_language_to_add.clicked.connect(
