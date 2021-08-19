@@ -84,7 +84,7 @@ class Ui_application(object):
         self.grass_frequency = QSpinBox(self.main_tab)
         self.grass_frequency.setObjectName(u"grass_frequency")
         self.grass_frequency.setCursor(QCursor(Qt.ArrowCursor))
-        self.grass_frequency.setMinimum(2)
+        self.grass_frequency.setMinimum(1)
         self.grass_frequency.setMaximum(1000000)
 
         self.grass_option.addWidget(self.grass_frequency, 1, 1, 1, 1)
@@ -345,27 +345,27 @@ class Ui_application(object):
         self.all_config_prompt.setText(QCoreApplication.translate("application", u"\u5168\u90e8\u914d\u7f6e:", None))
         self.tabs.setTabText(self.tabs.indexOf(self.config_tab), QCoreApplication.translate("application", u"\u914d\u7f6e", None))
         self.about_text_browser.setHtml(QCoreApplication.translate("application", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'SimSun'; font-size:large; font-weight:600;\">\u5173\u4e8e\u4f5c\u8005 </span></h3>\n"
-"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.github.com/superjavascrip\"><span style=\" text-decoration: underline; color:#"
-                        "16f216;\">Github @Superjavascrip</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://space.bilibili.com/426825448\"><span style=\" text-decoration: underline; color:#16f216;\">Bilibili @\u5170\u683c\u5982\u540c</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u9177\u5b89 @\u5170\u683c\u5982\u540cOfficial </li></ul>\n"
-"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'SimSun'; font-size:large; font-weight:600;\">\u7b80\u4ecb </span></h3>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                        "text-indent:0px;\"><span style=\" font-family:'SimSun'; font-weight:600;\">\u8fd9\u662f\u4e00\u4e2a\u4f7f\u7528Python\u7f16\u5199\u7684\u8c37\u6b4c\u751f\u8349\u5668\uff08GUI\uff09\uff0c\u53ef\u4ee5\u4f7f\u7528\u8c37\u6b4c\u7ffb\u8bd1\u5168\u81ea\u52a8\u7684\u5c06\u6587\u672c\u751f\u8349\u3002 </span></p>\n"
-"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'SimSun'; font-size:large; font-weight:600;\">\u9e23\u8c22 </span></h3>\n"
-"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python/cpython\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u89e3\u91ca\u5668\u5f00\u6e90\u4ee3\u7801</span></a> </li>\n"
-""
-                        "<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u5b98\u7f51</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/ssut/py-googletrans\"><span style=\" text-decoration: underline; color:#16f216;\">googletrans\u5e93</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://pyside.org\"><span style=\" text-decoration: underline; color:#16f216;\">PySide\u5b98\u7f51</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-w"
-                        "eight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/GTRONICK/QSS\"><span style=\" text-decoration: underline; color:#16f216;\">QSS\u9879\u76ee</span></a> </li>\n"
-"<li style=\" font-family:'SimSun'; font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\"><span style=\" text-decoration: underline; color:#16f216;\">BreezeStyleSheets</span></a> </li></ul>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:medium; font-weight:700;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:600;\">\u5173\u4e8e\u4f5c\u8005 </span></h3>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.github.com/superjavascrip\"><span style=\" text-decoration: underline; color:#16f216;\">Github @Superjavascrip</span></a> </li>\n"
+"<li style=\" font-weight:600"
+                        ";\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://space.bilibili.com/426825448\"><span style=\" text-decoration: underline; color:#16f216;\">Bilibili @\u5170\u683c\u5982\u540c</span></a> </li>\n"
+"<li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u9177\u5b89 @\u5170\u683c\u5982\u540cOfficial </li></ul>\n"
+"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:600;\">\u7b80\u4ecb </span></h3>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">\u8fd9\u662f\u4e00\u4e2a\u4f7f\u7528Python\u7f16\u5199\u7684\u8c37\u6b4c\u751f\u8349\u5668\uff08"
+                        "GUI\uff09\uff0c\u53ef\u4ee5\u4f7f\u7528\u8c37\u6b4c\u7ffb\u8bd1\u5168\u81ea\u52a8\u7684\u5c06\u6587\u672c\u751f\u8349\u3002 </span></p>\n"
+"<h3 align=\"center\" style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:600;\">\u9e23\u8c22 </span></h3>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python/cpython\"><span style=\" text-decoration: underline; color:#16f216;\">Python\u89e3\u91ca\u5668\u5f00\u6e90\u4ee3\u7801</span></a> </li>\n"
+"<li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span st"
+                        "yle=\" text-decoration: underline; color:#16f216;\">Python\u5b98\u7f51</span></a> </li>\n"
+"<li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/ssut/py-googletrans\"><span style=\" text-decoration: underline; color:#16f216;\">googletrans\u5e93</span></a> </li>\n"
+"<li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://pyside.org\"><span style=\" text-decoration: underline; color:#16f216;\">PySide\u5b98\u7f51</span></a> </li>\n"
+"<li style=\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/GTRONICK/QSS\"><span style=\" text-decoration: underline; color:#16f216;\">QSS\u9879\u76ee</span></a> </li>\n"
+"<li style="
+                        "\" font-weight:600;\" align=\"center\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Alexhuszagh/BreezeStyleSheets\"><span style=\" text-decoration: underline; color:#16f216;\">BreezeStyleSheets</span></a> </li></ul>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Microsoft YaHei UI'; font-size:medium; font-weight:696;\"><br /></p></body></html>", None))
         self.tabs.setTabText(self.tabs.indexOf(self.about_tab), QCoreApplication.translate("application", u"\u5173\u4e8e", None))
     # retranslateUi
 
