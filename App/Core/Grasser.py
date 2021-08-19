@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module is very important.
+This module is used to translate a text many times and the text will be fucking funny.
+"""
+
 import random
 from typing import List, Union
 

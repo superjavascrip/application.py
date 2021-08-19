@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+
+"""
+This is the main file of the project.
+Run this to open the application.
+"""
+
 from typing import List
 
 from UI_GoogleGrasser import Ui_application
@@ -79,7 +85,7 @@ class OnOutputGoogleVoiceClick(QObject):
                     "__Cache__/__Cache__{}.mp3".format(number + 1)
                 )
                 input_list = []
-                for a, b, c in os.walk(r'__Cache__/'):
+                for _, _, c in os.walk(r'__Cache__/'):
                     for i in c:
                         input_list.append("__Cache__/{}".format(i))
                 self.google_voice.splicing_audio(input_list, output_file)

@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module is used to output a voice from google.
+"""
+
 from typing import List
 
 import requests
-from pydub import AudioSegment
+import re
 import execjs
+
 from urllib.parse import quote
+from pydub import AudioSegment
 
 
 class GoogleVoice(object):
@@ -22,14 +29,15 @@ class GoogleVoice(object):
     @staticmethod
     def splicing_audio(
             file_list: List[str],
-            output_file
+            output_file: str
     ) -> None:
         try:
-            output_music = AudioSegment.empty()
+            output_audio = AudioSegment.empty()
             for i in file_list:
-                output_music += AudioSegment.from_file(i, "mp3")
-            output_music += AudioSegment.silent(duration=1000)
-            output_music.export(output_file, format="mp3")
+                output_audio += AudioSegment.from_file(
+                    i, output_file.split('.')[-1])
+            output_audio += AudioSegment.silent(duration=1000)
+            output_audio.export(output_file, format=output_file.split('.')[-1])
         except BaseException as Error:
             raise Error
 
@@ -81,14 +89,16 @@ function RL(a, b) {
     def output_voice(
             self,
             text: str,
-            output_file: str = "Output/Output.mp3",
+            output_file: str,
             language: str = "zh-cn"
     ) -> None:
+        if re.match(" *", output_file):
+            output_file = "Output/Output.mp3"
         try:
             url = f"https://{self.service_url}/translate_tts?ie=UTF-8&q={quote(text, 'utf-8')}&tl={language}" \
-                  f"&total=1&idx=0&textlen={quote(str(len(text)), 'utf-8')}&tk={self.get_token(text)}&client=webapp "
+                f"&total=1&idx=0&textlen={quote(str(len(text)), 'utf-8')}&tk={self.get_token(text)}&client=webapp "
             context = requests.get(url, timeout=3000)
-            with open(output_file, "wb") as output_file_write:
+            with open(output_file, "wb+") as output_file_write:
                 for data in context.iter_content(chunk_size=1024):
                     if data:
                         output_file_write.write(data)

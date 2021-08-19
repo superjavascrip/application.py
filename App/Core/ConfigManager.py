@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module is a tool of the configs.
+"""
+
 import json
 import os
 from typing import List
@@ -90,7 +95,8 @@ class ConfigManager(object):
             config_dict = json.load(config_file_read)
             for language_index in range(len(language_list)):
                 config_dict[config_name].insert(
-                    (add_index + 1 + language_index), language_list[language_index]
+                    (add_index + 1 +
+                     language_index), language_list[language_index]
                 )
             with open(self.config_file, "w+") as config_file_write:
                 config_file_write.write(

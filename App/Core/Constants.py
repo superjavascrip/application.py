@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+
+"""
+These are constants of the application.
+YOU SHOULD NOT EDIT THIS FILE.
+"""
+
 LANGUAGES = [
     "af",
     "sq",
@@ -108,6 +114,7 @@ LANGUAGES = [
     "yo",
     "zu"
 ]
+
 SERVICE_URLS = ('translate.google.ac', 'translate.google.ad', 'translate.google.ae',
                 'translate.google.al', 'translate.google.am', 'translate.google.as',
                 'translate.google.at', 'translate.google.az', 'translate.google.ba',
@@ -175,7 +182,8 @@ SERVICE_URLS = ('translate.google.ac', 'translate.google.ad', 'translate.google.
                 'translate.google.tn', 'translate.google.to', 'translate.google.tt',
                 'translate.google.us', 'translate.google.vg', 'translate.google.vu',
                 'translate.google.ws')
-LANGUAGE_TRANSLATE = {
+
+LANGUAGES_TRANSLATED = {
     "af": "南非语",
     "sq": "阿尔巴尼亚语",
     "am": "阿姆哈拉语",
@@ -212,6 +220,7 @@ LANGUAGE_TRANSLATE = {
     "ht": "海地克里奥尔语",
     "ha": "豪萨语",
     "haw": "夏威夷语",
+    "iw": "希伯来语",  # I don't know why these are two hebrew.
     "he": "希伯来语",
     "hi": "印地语",
     "hmn": "苗语",

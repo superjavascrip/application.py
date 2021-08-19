@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+
+"""
+This module is a tool of the setttings.
+You can set settings with this module.
+"""
+
 from typing import Union
 
 import json
