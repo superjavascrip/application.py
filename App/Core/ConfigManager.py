@@ -4,9 +4,10 @@
 This module is a tool of the configs.
 """
 
+from typing import List
+
 import json
 import os
-from typing import List
 
 
 class ConfigManager(object):
